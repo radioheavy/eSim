@@ -3,8 +3,6 @@ import { render } from '@react-email/components'
 import { OrderConfirmationEmail } from '@/components/email/order-confirmation'
 import { createAdminClient } from '@/lib/supabase/admin'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface SendOrderEmailParams {
   orderId: string
   customerName: string
@@ -18,6 +16,7 @@ interface SendOrderEmailParams {
 }
 
 export async function sendOrderEmail(params: SendOrderEmailParams) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const supabase = createAdminClient()
 
   // Download QR image from Supabase Storage
