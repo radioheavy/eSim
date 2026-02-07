@@ -7,7 +7,7 @@ import { OrderStatusBadge } from '@/components/admin/order-status-badge'
 import { formatDate } from '@/lib/utils/format'
 import { formatPrice } from '@/lib/utils/format'
 import { OrderActions } from './actions'
-import type { OrderStatus } from '@/lib/types'
+import type { OrderStatus, EmailLog } from '@/lib/types'
 
 export default async function OrderDetailPage({
   params,
@@ -103,7 +103,7 @@ export default async function OrderDetailPage({
           <h2 className="font-black text-lg uppercase mb-4 border-b-3 border-black pb-2">E-posta Geçmişi</h2>
           {emailLogs && emailLogs.length > 0 ? (
             <div className="space-y-2">
-              {emailLogs.map((log) => (
+              {emailLogs.map((log: EmailLog) => (
                 <div key={log.id} className="border-2 border-gray-200 p-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold uppercase">
